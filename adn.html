@@ -18,42 +18,55 @@
     <div class="term-group">
       <h6 class="term">Market Cap</h6>
       <p class="definition">3,74,360 Cr.</p>
+     <span class="tooltiptext">The total market value of a publicly traded company's outstanding shares of stock.</span> 
+
     </div>
     <div class="term-group">
       <h6 class="term">Current Price</h6>
       <p class="definition">1,022</p>
+     <span class="tooltiptext">The current price at which a stock is being traded in the market.</span> 
+
     </div>
     <div class="term-group ">
       <h6 class="term">High/Low</h6>
       <p class="definition">1,066 / 400</p>
+    <span class="tooltiptext">The highest and lowest price at which a stock has been traded during a specific period.</span> 
+
     </div>
 </div>
 <div class="cardss row row-cols-3 mb-2">
     <div class="term-group">
       <h6 class="term">Stock P/E</h6>
       <p class="definition">18.6</p>
+      <span class="tooltiptext">A ratio that compares a company's current share price to its earnings per share (EPS).</span> 
     </div>
     <div class="term-group">
       <h6 class="term">Book Value</h6>
       <p class="definition">161</p>
+      <span class="tooltiptext">The annual dividend payment per share divided by the current market price of the stock, expressed as a percentage.</span> 
     </div>
     <div class="term-group">
       <h6 class="term">Dividend Yield</h6>
       <p class="definition">0.20%</p>
+      <span class="tooltiptext">The annual dividend payment per share divided by the current market price of the stock, expressed as a percentage.</span> 
+
     </div>
     </div>
     <div class="cardss row row-cols-3">
     <div class="term-group">
       <h6 class="term">ROCE</h6>
       <p class="definition">5.95%</p>
+       <span class="tooltiptext">A profitability ratio that measures the return on capital employed (ROCE) by a company.</span> 
     </div>
     <div class="term-group">
       <h6 class="term">ROE</h6>
       <p class="definition">5.62%</p>
+      <span class="tooltiptext">A profitability ratio that measures the return on equity (ROE) of a company.</span> 
     </div>
     <div class="term-group">
       <h6 class="term">Face Value</h6>
       <p class="definition">2.00</p>
+      <span class="tooltiptext">The nominal or par value of a stock, as specified by the issuing company.</span> 
     </div>
   </div>
   </div>
@@ -79,15 +92,50 @@
   }
 
   .term-group:hover {
-    transform: scale(1.002); /* Slight scale on hover */
+    transform: scale(1.02); /* Slight scale on hover */
   }
 
   .term {
     font-weight: bold;
     margin-bottom: 5px;
   }
+   .tooltiptext {
+    visibility: hidden;
+    background-color: #f5f5f5;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+  } 
 
   .definition {
     line-height: 1.5;
   }
-</style>
+  </style>
+  <script>
+   const termGroups = document.querySelectorAll('.term-group');
+
+function showTooltip(event) {
+  const tooltip = event.target.querySelector('.tooltiptext');
+
+    tooltip.style.visibility = 'visible';
+
+
+}
+function hideTooltip(event) {
+
+  const tooltip = event.target.querySelector('.tooltiptext');
+
+  setTimeout(() => {
+    tooltip.style.visibility = 'hidden';
+  }, 500);
+}
+
+termGroups.forEach(group => {
+  group.addEventListener('mouseover', showTooltip);
+  group.addEventListener('mouseout', hideTooltip);
+});
+</script>
+</html>
